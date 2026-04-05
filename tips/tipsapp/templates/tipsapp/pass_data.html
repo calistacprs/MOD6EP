@@ -1,0 +1,23 @@
+{% extends 'tipsapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8">
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title"> Person Details:</h5>
+        </div>
+        <div class="card-body">
+
+            
+            <h2> Page in Use by: {{id}} </h2>
+            <p>
+                Name: {{d.name}}
+            </p>
+            
+        </div>
+    </div>
+
+</div>
+{% endblock %}

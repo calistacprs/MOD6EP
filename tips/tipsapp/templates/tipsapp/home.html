@@ -1,0 +1,30 @@
+{% extends 'tipsapp/base.html' %}
+{% load static %}
+
+
+
+                {% block content %}
+                <div class="col-12">
+                    <table class="table table-striped mb-5">
+                        <thead>
+                            <th scope="col"> Name </th>
+                            <th scope="col"> ID Number </th>
+                            <th scope="col"> Methods </th>
+                        </thead>
+                        <tbody>
+                            {% for d in persons %}
+                            <tr>
+                                <td> {{ d.name }} </td>
+                                <td> {{ d.id_number }} </td>
+                                <td>
+                                    <a href="{% url 'pass_data' pk=d.pk id=d.id_number %}"  class="btn btn-dark">Pass Details</button>
+                                    <a href="{% url 'global_variable' pk=d.pk %}"  class="btn btn-dark">Global Variable</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endblock %}
+
+            
