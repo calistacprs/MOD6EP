@@ -1,0 +1,45 @@
+{% extends 'MyInventoryApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            Type in Bottle Details:
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label>SKU:</label>
+                    <input type="text" class="form-control" name="sku">
+                </div>
+                <div class="mb-3">
+                    <label>Brand:</label>
+                    <input type="text" class="form-control" name="brand">
+                </div>
+                <div class="mb-3">
+                    <label>Cost:</label>
+                    <input type="number" class="form-control" name="cost">
+                </div>
+                <div class="mb-3">
+                    <label>Size:</label>
+                    <input type="text" class="form-control" name="size">
+                </div>
+                <div class="mb-3">
+                    <label>Mouth Size:</label>
+                    <input type="text" class="form-control" name="mouth_size">
+                </div>
+                <div class="mb-3">
+                    <label>Color:</label>
+                    <input type="text" class="form-control" name="color">
+                </div>
+                <div class="mb-3">
+                    <label>Current Quantity:</label>
+                    <input type="number" class="form-control" name="current_quantity">
+                </div>
+                <button type="submit" class="btn btn-secondary">Add Bottle</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

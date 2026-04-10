@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>Water Bottles Inventory</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static '/bootstrap/css/custom.css' %}">
+        <script src="{% static '/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    </head>
+    <body>
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-dark bg-custom mb-3 sticky-top" style="background-color: #00346b;">
+            <div class="container-fluid">
+                <a class="navbar-brand mb-0" href="{% url 'view_supplier' %}">Water Bottles Inventory</a>
+                <a href="{% url 'add_bottle' %}" style="color:white"><i class="material-icons">add</i></a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>  
+
+    </body>
+</html>
