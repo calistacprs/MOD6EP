@@ -6,7 +6,7 @@ id = 0
 
 def better_menu(request):
     dish_objects = Dish.objects.all()
-    return render(request, 'tapasapp/basic_list.html', {'dishes':dish_objects})
+    return render(request, 'tapasapp/basic_list.html', {'dishes':dish_objects, 'pk':id})
 
 def add_menu(request):
     if(request.method=="POST"):
@@ -37,6 +37,7 @@ def update_dish(request, pk):
         return render(request, 'tapasapp/update_menu.html', {'d':d})
     
 def view_login(request):
+    global id
     a = ""
 
     if request.GET.get('page') == '1':
@@ -47,6 +48,8 @@ def view_login(request):
         password = request.POST.get('password')
 
         if Account.objects.filter(username=username, password=password).exists():
+            acc = Account.objects.get(username=username, password=password)
+            id = acc.pk
             return redirect('add_menu')
         else:
             a = "Invalid login"
@@ -70,7 +73,7 @@ def view_signup(request):
 
 def view_basic_list(request, pk):
     dish_objects = Dish.objects.all()
-    return render(request, 'tapasapp/basic_list.html', {'dishes': dish_objects})
+    return render(request, 'tapasapp/basic_list.html', {'dishes': dish_objects, 'pk': pk})
 
 def manage_account(request):
     return render(request, 'tapasapp/manage_account.html')
@@ -78,5 +81,20 @@ def manage_account(request):
 def logout(request):
     global id
     id = 0 
+    return redirect('login')
+
+def manage_account(request, pk):
+    account = get_object_or_404(Account, pk=pk)
+    return render(request, 'tapasapp/manage_account.html', {'account': account})
+
+def change_password(request, pk):
+    account = get_object_or_404(Account, pk=pk)
+    return render(request, 'tapasapp/change_password.html', {'account': account})
+
+def delete_account(request, pk):
+    global id
+    Account.objects.filter(pk=pk).delete()
+
+    id = 0
     
     return redirect('login')
