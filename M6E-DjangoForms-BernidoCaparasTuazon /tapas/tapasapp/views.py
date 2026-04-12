@@ -6,7 +6,7 @@ id = 0
 
 def better_menu(request):
     dish_objects = Dish.objects.all()
-    return render(request, 'tapasapp/better_list.html', {'dishes':dish_objects})
+    return render(request, 'tapasapp/basic_list.html', {'dishes':dish_objects})
 
 def add_menu(request):
     if(request.method=="POST"):
@@ -68,7 +68,7 @@ def view_signup(request):
 
     return render(request, 'tapasapp/signup.html', {'display': a})
 
-def view_basic_list(request):
+def view_basic_list(request, pk):
     dish_objects = Dish.objects.all()
     return render(request, 'tapasapp/basic_list.html', {'dishes': dish_objects})
 
@@ -79,4 +79,4 @@ def logout(request):
     global id
     id = 0 
     
-    return redirect('view_login')
+    return redirect('login')
