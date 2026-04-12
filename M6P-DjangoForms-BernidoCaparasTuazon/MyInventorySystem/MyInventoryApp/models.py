@@ -30,3 +30,16 @@ class WaterBottle(models.Model):
             + ", supplied by " + self.supplied_by.name + ", " + str(self.cost) + " : " + str(self.current_quantity)
         )
 
+
+class Account(models.Model):
+    username = models.CharField(max_length=300, unique=True)
+    password = models.CharField(max_length=300)
+
+    def getUsername(self):
+        return self.username
+    
+    def getPassword(self):
+        return self.password
+
+    def __str__(self):
+        return self.username

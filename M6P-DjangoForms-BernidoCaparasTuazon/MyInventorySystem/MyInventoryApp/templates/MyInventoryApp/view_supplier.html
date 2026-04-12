@@ -2,6 +2,13 @@
 
 {% block content %}
     <h2>List of Suppliers</h2>
+
+    <div class="mb-3">
+        <a href="{% url 'add_bottle' %}" class="btn btn-primary">Add Water Bottles</a>
+        <a href="{% url 'manage_account' %}" class="btn btn-secondary">Manage Account</a>
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -14,7 +21,12 @@
         <tbody>
             {% for supplier in suppliers %}
                 <tr>
-                    <td>{{ supplier.name }}</td>
+                    <!-- clickable name -->
+                    <td>
+                        <a href="{% url 'view_bottles' pk=supplier.pk %}"> 
+                            {{ supplier.name }}
+                        </a>
+                    </td>
                     <td>{{ supplier.city }}</td>
                     <td>{{ supplier.country }}</td>
                     <td>{{ supplier.created_at }}</td>

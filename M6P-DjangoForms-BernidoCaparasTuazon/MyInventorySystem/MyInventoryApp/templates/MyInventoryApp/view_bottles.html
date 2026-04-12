@@ -1,7 +1,13 @@
 {% extends 'MyInventoryApp/base.html' %}
 
 {% block content %}
-    <h2>List of Water Bottles</h2>
+    <h2>Water Bottles from {{ supplier.name }}</h2>
+
+    <!--back button -->
+    <div class="mb-3">
+        <a href="{% url 'view_supplier' %}" class="btn btn-secondary">Back to Suppliers</a>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
