@@ -29,3 +29,4 @@ class WaterBottle(models.Model):
             self.sku + ": " + self.brand + ", " + self.mouth_size + ", " + self.size + ", " + self.color
             + ", supplied by " + self.supplied_by.name + ", " + str(self.cost) + " : " + str(self.current_quantity)
         )
+
