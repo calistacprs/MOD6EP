@@ -1,0 +1,30 @@
+{% extends 'MyInventoryApp/base.html' %}
+
+{% block content %}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Bottle Details</h5>
+        </div>
+
+        <div class="card-body">
+
+            <p>>SKU: {{ bottle.sku }}</p>
+            <p>Brand: {{ bottle.brand }}</p>
+            <p>Cost: {{ bottle.cost }}</p>
+            <p>Size: {{ bottle.size }}</p>
+            <p>Mouth Size: {{ bottle.mouth_size }}</p>
+            <p>Color: {{ bottle.color }}</p>
+            <p>Supplier: {{ bottle.supplied_by.name }}</p>
+            <p>Quantity: {{ bottle.current_quantity }}</p>
+
+            <a href="{% url 'delete_bottle' pk=bottle.pk %}" class="btn btn-dark">Delete</a>
+            <a href="{% url 'view_bottles' %}" class="btn btn-secondary">Back</a>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

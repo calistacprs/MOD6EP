@@ -24,6 +24,11 @@
         <tbody>
             {% for bottle in bottles %}
                 <tr>
+                    <td>
+                        <a href="{% url 'view_bottle_details' pk=bottle.pk %}">
+                            {{ bottle.sku }}
+                        </a>
+                    </td>
                     <td>{{ bottle.sku }}</td>
                     <td>{{ bottle.brand }}</td>
                     <td>{{ bottle.cost }}</td>

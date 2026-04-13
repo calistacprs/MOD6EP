@@ -11,11 +11,17 @@ def view_supplier(request):
     return render(request, 'MyInventoryApp/view_supplier.html', {'suppliers': supplier_objects, 'user': current_user})
 
 
-def view_bottles(request, pk):
-    s = get_object_or_404(Supplier, pk=pk)
+def view_bottles(request):
     bottle_objects = WaterBottle.objects.all()
     return render(request, 'MyInventoryApp/view_bottles.html', {'bottles': bottle_objects, 'supplier': s})
 
+def view_bottle_details(request, pk):
+    bottle = get_object_or_404(WaterBottle, pk=pk)
+    return render(request, 'MyInventoryApp/view_bottle_details.html', {'bottle': bottle})
+
+def delete_bottle(request, pk):
+    WaterBottle.objects.filter(pk=pk).delete()
+    return redirect('view_bottles')
 
 def add_bottle(request):
     supplier_objects = Supplier.objects.all()
@@ -87,7 +93,7 @@ def signup_view(request):
 
 def manage_account(request, pk):
     user_account = get_object_or_404(Account, pk=pk)
-    return render(request, 'MyInventoryApp/manage_account.html', {'user': current_user})
+    return render(request, 'MyInventoryApp/manage_account.html', {'user': user_account})
 
 def delete_account(request, pk):
     global current_user
@@ -100,5 +106,27 @@ def logout_view(request):
     current_user = None
     return redirect('login')
 
-def change_password():
-    pass
+def change_password(request, pk):
+    account = get_object_or_404(Account, pk=pk)
+    a = ""
+        
+    if request.method == "POST":
+        current_password = request.POST.get('current_password')
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if current_password != account.password:
+            a = "Current password is incorrect"
+        
+        elif new_password != confirm_password:
+            a = "New passwords do not match"
+        
+        else:
+            account.password = new_password
+            account.save()
+            return redirect('manage_account', pk=account.pk)
+
+    return render(request, 'MyInventoryApp/change_password.html', {
+        'account': account,
+        'display': a
+    })

@@ -23,10 +23,12 @@ urlpatterns = [
     path('', views.login_view, name='login'),
     path('signup/', views.signup_view, name='signup'),
     path('view_supplier/', views.view_supplier, name='view_supplier'),
-    path('view_bottles/<int:pk>/', views.view_bottles, name='view_bottles'),
     path('add_bottle/', views.add_bottle, name='add_bottle'),
     path('logout/', views.logout_view, name='logout'),
     path('manage_account/<int:pk>/', views.manage_account, name='manage_account'),
     path('delete_account/<int:pk>/', views.delete_account, name='delete_account'),
+    path('view_bottles/', views.view_bottles, name='view_bottles'),
+    path('view_bottle_details/<int:pk>/', views.view_bottle_details, name='view_bottle_details'),
+    path('delete_bottle/<int:pk>/', views.delete_bottle, name='delete_bottle'),
     path('change_password/<int:pk>/', views.change_password, name='change_password'),
 ]
