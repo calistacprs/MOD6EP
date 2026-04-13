@@ -6,8 +6,9 @@ from .models import Account, Supplier, WaterBottle
 current_user = None
 
 def view_supplier(request):
+    global current_user
     supplier_objects = Supplier.objects.all()
-    return render(request, 'MyInventoryApp/view_supplier.html', {'suppliers': supplier_objects})
+    return render(request, 'MyInventoryApp/view_supplier.html', {'suppliers': supplier_objects, 'user': current_user})
 
 
 def view_bottles(request, pk):
@@ -84,12 +85,20 @@ def signup_view(request):
     return render(request, 'MyInventoryApp/signup.html')
 
 
-def manage_account(request):
-    global current_user
+def manage_account(request, pk):
+    user_account = get_object_or_404(Account, pk=pk)
     return render(request, 'MyInventoryApp/manage_account.html', {'user': current_user})
 
+def delete_account(request, pk):
+    global current_user
+    Account.objects.filter(pk=pk).delete()
+    current_user = None
+    return redirect('login')
 
 def logout_view(request):
     global current_user
     current_user = None
     return redirect('login')
+
+def change_password():
+    pass

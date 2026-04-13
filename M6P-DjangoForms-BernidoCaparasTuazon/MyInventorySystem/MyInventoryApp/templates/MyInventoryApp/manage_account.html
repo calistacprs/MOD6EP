@@ -11,7 +11,11 @@
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Password:</strong> {{ user.password }}</p>
 
-            <a href="{% url 'view_supplier' %}" class="btn btn-secondary">Back</a>
+            <div class="mt-4">
+                <a href="{% url 'change_password' pk=user.pk %}" class="btn btn-warning">Change Password</a>
+                <a href="{% url 'delete_account' pk=user.pk %}" class="btn btn-danger">Delete Account</a>
+                <a href="{% url 'view_supplier' %}" class="btn btn-secondary">Back</a>
+            </div>
 
         </div>
     </div>

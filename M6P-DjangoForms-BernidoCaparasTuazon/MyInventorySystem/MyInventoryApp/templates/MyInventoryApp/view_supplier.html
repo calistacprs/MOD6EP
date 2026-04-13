@@ -5,7 +5,7 @@
 
     <div class="mb-3">
         <a href="{% url 'add_bottle' %}" class="btn btn-primary">Add Water Bottles</a>
-        <a href="{% url 'manage_account' %}" class="btn btn-secondary">Manage Account</a>
+        <a href="{% url 'manage_account' pk=user.pk %}" class="btn btn-secondary">Manage Account</a>
         <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
     </div>
 
