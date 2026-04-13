@@ -50,7 +50,7 @@ def view_login(request):
         if Account.objects.filter(username=username, password=password).exists():
             acc = Account.objects.get(username=username, password=password)
             id = acc.pk
-            return redirect('add_menu')
+            return redirect('basic_list', pk=id)
         else:
             a = "Invalid login"
 
