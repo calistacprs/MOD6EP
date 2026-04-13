@@ -13,7 +13,7 @@ def view_supplier(request):
 
 def view_bottles(request):
     bottle_objects = WaterBottle.objects.all()
-    return render(request, 'MyInventoryApp/view_bottles.html', {'bottles': bottle_objects, 'supplier': s})
+    return render(request, 'MyInventoryApp/view_bottles.html', {'bottles': bottle_objects})
 
 def view_bottle_details(request, pk):
     bottle = get_object_or_404(WaterBottle, pk=pk)
