@@ -12,32 +12,32 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label>SKU:</label>
-                    <input type="text" class="form-control" name="sku">
+                    <input type="text" class="form-control" name="sku" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Brand:</label>
-                    <input type="text" class="form-control" name="brand">
+                    <input type="text" class="form-control" name="brand" required>
                 </div>
                 
                 <div class="mb-3">
                     <label>Cost:</label>
-                    <input type="number" class="form-control" name="cost">
+                    <input type="number" class="form-control" name="cost" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Size:</label>
-                    <input type="text" class="form-control" name="size">
+                    <input type="text" class="form-control" name="size" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Mouth Size:</label>
-                    <input type="text" class="form-control" name="mouth_size">
+                    <input type="text" class="form-control" name="mouth_size" required>
                 </div>
 
                 <div class="mb-3">
                     <label>Color:</label>
-                    <input type="text" class="form-control" name="color">
+                    <input type="text" class="form-control" name="color" required>
                 </div>
 
                 <!-- supplier dropdown -->
@@ -52,7 +52,7 @@
 
                 <div class="mb-3">
                     <label>Current Quantity:</label>
-                    <input type="number" class="form-control" name="current_quantity">
+                    <input type="number" class="form-control" name="current_quantity" required>
                 </div>
 
                 <button type="submit" class="btn btn-secondary">Add Bottle</button>
